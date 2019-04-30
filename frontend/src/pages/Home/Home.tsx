@@ -5,15 +5,16 @@ import Style from './Home.style';
 class Home extends React.Component {
   render(): React.ReactNode {
     const pokemon = 'Carapuce';
+    const pokemon_number = 7;
+    const pokemon_image_url =
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png';
 
     return (
       <Style.Intro>
-        <div>Bienvenue sur ton futur pokédex !</div>
-        <div>
-          Tu vas pouvoir apprendre tout ce qu'il faut sur React, Redux et Symfony, et attraper des
-          pokemons !
-        </div>
-        <div>Commence par créer ton premier pokemon: {pokemon}</div>
+        <h1>
+          Pokemon n°{pokemon_number} : {pokemon}
+        </h1>
+        <img src={pokemon_image_url} alt={pokemon} />
       </Style.Intro>
     );
   }

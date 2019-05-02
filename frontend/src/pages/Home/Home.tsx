@@ -24,10 +24,9 @@ class Home extends React.Component<Props, State> {
 
     return (
       <Style.Intro>
-        <Pokemon name={this.state.pokemons[3].name} id={this.state.pokemons[3].id} />
-        <Pokemon name="carapuce" id={7} />
-        <Pokemon name="carabaffe" id={8} />
-        <Pokemon name="tortank" id={9} />
+        {this.state.pokemons.map((item, key) => (
+          <Pokemon name={item.name} id={item.id} key={item.id} />
+        ))}
       </Style.Intro>
     );
   }

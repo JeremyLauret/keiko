@@ -1,16 +1,33 @@
 import * as React from 'react';
 
 import Style from './Home.style';
-
 import Pokemon from 'components/Pokemon';
+import { makeGetRequest } from 'services/networking/request';
 
-class Home extends React.Component {
+interface Props {}
+interface State {
+  pokemons: {
+    id: number;
+    name: string;
+  }[];
+}
+
+class Home extends React.Component<Props, State> {
+  componentDidMount() {
+    makeGetRequest('/pokemon').then(response => this.setState({ pokemons: response.body }));
+  }
+
   render(): React.ReactNode {
+    if (!this.state) {
+      return <Style.Intro>Pokemons are loading, please wait...</Style.Intro>;
+    }
+
     return (
       <Style.Intro>
-        <Pokemon name="Carapuce" id={7} />
-        <Pokemon name="Carabaffe" id={8} />
-        <Pokemon name="Tortank" id={9} />
+        <Pokemon name={this.state.pokemons[3].name} id={this.state.pokemons[3].id} />
+        <Pokemon name="carapuce" id={7} />
+        <Pokemon name="carabaffe" id={8} />
+        <Pokemon name="tortank" id={9} />
       </Style.Intro>
     );
   }

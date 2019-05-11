@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export default {
-  Intro: styled.div`
+  PokemonCard: styled.div`
     font-size: 20px;
+    font-family: 'PokemonFont';
     display: flex;
     align-items: center;
     flex-direction: column;

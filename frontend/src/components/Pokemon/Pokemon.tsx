@@ -14,12 +14,12 @@ class Pokemon extends React.Component<Props> {
     }.png`;
 
     return (
-      <Style.Intro>
+      <Style.PokemonCard>
         <h1>
           Pokemon n°{this.props.id} : {this.props.name}
         </h1>
         <img src={pokemonImageUrl} alt={this.props.name} />
-      </Style.Intro>
+      </Style.PokemonCard>
     );
   }
 }

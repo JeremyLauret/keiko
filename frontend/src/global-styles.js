@@ -3,8 +3,6 @@
 
 import { createGlobalStyle } from 'styled-components';
 
-// import PokemonFontURL from '../public/fonts/pokemon-gb.ttf';
-
 export default createGlobalStyle`
   @font-face {
      font-family: 'PokemonFont';

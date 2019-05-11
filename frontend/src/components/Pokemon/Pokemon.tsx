@@ -10,9 +10,7 @@ interface Props {
 class Pokemon extends React.Component<Props> {
   render(): React.ReactNode {
     const pokemon_image_url =
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
-      this.props.id +
-      '.png';
+      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.props.id}.png`;
 
     return (
       <Style.Intro>

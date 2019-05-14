@@ -28,21 +28,31 @@ class Home extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     if (this.state.pokemons.length == 0) {
-      return <Style.Intro>Pokemons are loading, please wait...</Style.Intro>;
+      return <Style.Pokedex>Pokemons are loading, please wait...</Style.Pokedex>;
     }
 
     return (
-      <Style.Intro>
-        {this.state.pokemons.map(item => (
-          <Pokemon
-            name={item.name}
-            id={item.id}
-            height={item.height}
-            weight={item.weight}
-            key={item.id}
-          />
-        ))}
-      </Style.Intro>
+      // <Style.Pokedex>
+      //   <h1 id="pokedex-title">Pokedex</h1> */}
+      //   <div className="pokemon-grid">
+      //     {this.state.pokemons.map(item => (
+      //       <Pokemon
+      //         name={item.name}
+      //         id={item.id}
+      //         height={item.height}
+      //         weight={item.weight}
+      //         key={item.id}
+      //       />
+      //     ))}
+      //   </div>
+      <Pokemon
+        name={this.state.pokemons[0].name}
+        id={this.state.pokemons[0].id}
+        height={this.state.pokemons[0].height}
+        weight={this.state.pokemons[0].weight}
+        key={this.state.pokemons[0].id}
+      />
+      // </Style.Pokedex>
     );
   }
 }

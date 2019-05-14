@@ -30,8 +30,8 @@ class Pokemon extends React.Component<Props> {
 
     return (
       <Style.PokemonCard>
-        <h1>{this.capitalName}</h1>
-        <img src={pokemonImageUrl} alt={this.capitalName} />
+        <h1 id="card-title">{this.capitalName}</h1>
+        <img id="card-image" src={pokemonImageUrl} alt={this.capitalName} />
         <p>Id: {this.props.id}</p>
         <p>Weight: {this.weight} kg</p>
         <p>Height: {this.height} cm</p>

@@ -17,5 +17,12 @@ export default {
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 20px;
     }
+    #error-message {
+      font-size: 50px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   `,
 };

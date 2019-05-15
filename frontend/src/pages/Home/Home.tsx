@@ -7,6 +7,7 @@ import { makeGetRequest } from 'services/networking/request';
 interface Props {}
 interface State {
   loading: boolean;
+  error: boolean;
   pokemons: {
     id: number;
     name: string;
@@ -20,14 +21,15 @@ class Home extends React.Component<Props, State> {
     super(props);
     this.state = {
       loading: true,
+      error: false,
       pokemons: [],
     };
   }
 
   componentDidMount() {
-    makeGetRequest('/pokemon').then(response =>
-      this.setState({ loading: false, pokemons: response.body }),
-    );
+    makeGetRequest('/pokmon')
+      .then(response => this.setState({ loading: false, pokemons: response.body }))
+      .catch(error => this.setState({ loading: false, error: true }));
   }
 
   render(): React.ReactNode {
@@ -35,6 +37,7 @@ class Home extends React.Component<Props, State> {
       <Style.Pokedex>
         <h1 className="pokedex-title">Pokedex</h1>
         {this.state.loading && <img src={`${process.env.PUBLIC_URL}/loader.svg`} alt="Loader" />}
+        {this.state.error && <p id="error-message">Something wrong happened. Send help.</p>}
         <div className="pokedex-grid">
           {this.state.pokemons.map(item => (
             <Pokemon

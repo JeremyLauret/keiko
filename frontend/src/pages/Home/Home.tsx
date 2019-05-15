@@ -27,7 +27,7 @@ class Home extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    makeGetRequest('/pokmon')
+    makeGetRequest('/pokemon')
       .then(response => this.setState({ loading: false, pokemons: response.body }))
       .catch(error => this.setState({ loading: false, error: true }));
   }

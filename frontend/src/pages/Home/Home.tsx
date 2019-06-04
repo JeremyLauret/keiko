@@ -37,7 +37,7 @@ class Home extends React.Component<Props, State> {
       <Style.Pokedex>
         <h1 className="pokedex-title">Pokedex</h1>
         {this.state.loading && <img src={`${process.env.PUBLIC_URL}/loader.svg`} alt="Loader" />}
-        {this.state.error && <p id="error-message">Something wrong happened. Send help.</p>}
+        {this.state.error && <p className="error-message">Something wrong happened. Send help.</p>}
         <div className="pokedex-grid">
           {this.state.pokemons.map(item => (
             <Pokemon

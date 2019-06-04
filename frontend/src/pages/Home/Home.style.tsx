@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export default {
   Pokedex: styled.div`
     --title-size: 32px;
+    --error-size: 50px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -17,8 +18,8 @@ export default {
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 20px;
     }
-    #error-message {
-      font-size: 50px;
+    .error-message {
+      font-size: var(--error-size);
       position: fixed;
       top: 50%;
       left: 50%;

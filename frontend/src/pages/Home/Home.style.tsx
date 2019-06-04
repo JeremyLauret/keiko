@@ -5,13 +5,13 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
-    #pokedex-title {
+    .pokedex-title {
       font-family: 'PokemonFont';
       font-size: 32px;
       padding-top: 40px;
       padding-bottom: 40px;
     }
-    .pokemon-grid {
+    .pokedex-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 20px;

@@ -33,8 +33,8 @@ class Home extends React.Component<Props, State> {
 
     return (
       <Style.Pokedex>
-        <h1 id="pokedex-title">Pokedex</h1>
-        <div className="pokemon-grid">
+        <h1 className="pokedex-title">Pokedex</h1>
+        <div className="pokedex-grid">
           {this.state.pokemons.map(item => (
             <Pokemon
               name={item.name}

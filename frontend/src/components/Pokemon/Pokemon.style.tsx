@@ -10,17 +10,13 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
-    #card-title {
+    .card-title {
       font-size: 13px;
     }
-    p {
+    .card-info {
       font-size: 10px;
       padding-top: 0.3em;
       padding-bottom: 0.3em;
-    }
-    #card-img {
-      padding-top: 60px;
-      padding-bottom: 60px;
     }
   `,
 };

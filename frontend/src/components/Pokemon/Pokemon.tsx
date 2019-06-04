@@ -10,18 +10,12 @@ interface Props {
 }
 
 class Pokemon extends React.Component<Props> {
-  // Return the Pokemon name with a capital first letter.
-  get capitalName(): string {
-    return `${this.props.name.charAt(0).toUpperCase()}${this.props.name.slice(1)}`;
-  }
+  // The Pokemon name with a capital first letter.
+  capitalName = () => `${this.props.name.charAt(0).toUpperCase()}${this.props.name.slice(1)}`;
 
-  get height(): number {
-    return this.props.height * 10;
-  }
+  height = () => this.props.height * 10;
 
-  get weight(): number {
-    return this.props.weight / 10;
-  }
+  weight = () => this.props.weight / 10;
 
   render(): React.ReactNode {
     const pokemonImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
@@ -30,11 +24,11 @@ class Pokemon extends React.Component<Props> {
 
     return (
       <Style.PokemonCard>
-        <h1 id="card-title">{this.capitalName}</h1>
-        <img id="card-image" src={pokemonImageUrl} alt={this.capitalName} />
-        <p>Id: {this.props.id}</p>
-        <p>Weight: {this.weight} kg</p>
-        <p>Height: {this.height} cm</p>
+        <h1 className="card-title">{this.capitalName()}</h1>
+        <img src={pokemonImageUrl} alt={this.capitalName()} />
+        <p className="card-info">Id: {this.props.id}</p>
+        <p className="card-info">Weight: {this.weight()} kg</p>
+        <p className="card-info">Height: {this.height()} cm</p>
       </Style.PokemonCard>
     );
   }

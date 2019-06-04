@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export default {
   Pokedex: styled.div`
+    --title-size: 32px;
     display: flex;
     align-items: center;
     flex-direction: column;
     .pokedex-title {
       font-family: 'PokemonFont';
-      font-size: 32px;
+      font-size: var(--title-size);
       padding-top: 40px;
       padding-bottom: 40px;
     }

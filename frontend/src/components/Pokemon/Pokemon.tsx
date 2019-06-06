@@ -12,19 +12,23 @@ interface Props {
 // Return a string with a capital first letter.
 let capitalizeFirstLetter = (str: string) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
 
-let Pokemon = (props: Props) => (
-  <Style.PokemonCard>
-    <h1 className="card-title">{capitalizeFirstLetter(props.name)}</h1>
-    <img
-      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-        props.id
-      }.png`}
-      alt={capitalizeFirstLetter(props.name)}
-    />
-    <p className="card-info">Id: {props.id}</p>
-    <p className="card-info">Weight: {props.weight / 10} kg</p>
-    <p className="card-info">Height: {props.height * 10} cm</p>
-  </Style.PokemonCard>
-);
+function Pokemon(props: Props) {
+  const [displayBack, setDisplayBack] = React.useState(false);
+  return (
+    <Style.PokemonCard>
+      <h1 className="card-title">{capitalizeFirstLetter(props.name)}</h1>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+          displayBack ? 'back/' : ''
+        }${props.id}.png`}
+        alt={capitalizeFirstLetter(props.name)}
+        onClick={() => setDisplayBack(!displayBack)}
+      />
+      <p className="card-info">Id: {props.id}</p>
+      <p className="card-info">Weight: {props.weight / 10} kg</p>
+      <p className="card-info">Height: {props.height * 10} cm</p>
+    </Style.PokemonCard>
+  );
+}
 
 export default Pokemon;

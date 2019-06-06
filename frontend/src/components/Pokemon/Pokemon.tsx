@@ -16,25 +16,24 @@ function Pokemon(props: Props) {
   const [displayBack, setDisplayBack] = React.useState(false);
   return (
     <Style.PokemonCard>
-      <div className="top-row">
-        <img className="hidden-ico" src={`${process.env.PUBLIC_URL}/turn-ico.svg`} alt="" />
+      <img
+        className="turn-ico"
+        src={`${process.env.PUBLIC_URL}/turn-ico.svg`}
+        alt=""
+        onClick={() => setDisplayBack(!displayBack)}
+      />
+      <div className="column">
         <h1 className="card-title">{capitalizeFirstLetter(props.name)}</h1>
         <img
-          className="turn-ico"
-          src={`${process.env.PUBLIC_URL}/turn-ico.svg`}
-          alt=""
-          onClick={() => setDisplayBack(!displayBack)}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            displayBack ? 'back/' : ''
+          }${props.id}.png`}
+          alt={capitalizeFirstLetter(props.name)}
         />
+        <p className="card-info">Id: {props.id}</p>
+        <p className="card-info">Weight: {props.weight / 10} kg</p>
+        <p className="card-info">Height: {props.height * 10} cm</p>
       </div>
-      <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-          displayBack ? 'back/' : ''
-        }${props.id}.png`}
-        alt={capitalizeFirstLetter(props.name)}
-      />
-      <p className="card-info">Id: {props.id}</p>
-      <p className="card-info">Weight: {props.weight / 10} kg</p>
-      <p className="card-info">Height: {props.height * 10} cm</p>
     </Style.PokemonCard>
   );
 }

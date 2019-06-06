@@ -2,32 +2,24 @@ import styled from 'styled-components';
 
 export default {
   PokemonCard: styled.div`
-    padding-bottom: 10px;
+    position: relative;
     border-style: double;
     border-width: 5px;
     font-family: 'PokemonFont';
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    /* Top row */
-    .top-row {
+    .turn-ico {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    .column {
+      padding: 10px 50px;
       display: flex;
-      width: 250px;
+      align-items: center;
+      flex-direction: column;
     }
     .card-title {
-      margin-top: 10px;
       font-size: 13px;
     }
-    .hidden-ico {
-      margin-right: auto;
-      visibility: hidden;
-    }
-    .turn-ico {
-      margin-left: auto;
-    }
-
-    /* Bottom text */
     .card-info {
       font-size: 10px;
       padding-top: 0.3em;

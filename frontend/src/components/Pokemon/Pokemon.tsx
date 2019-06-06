@@ -16,13 +16,21 @@ function Pokemon(props: Props) {
   const [displayBack, setDisplayBack] = React.useState(false);
   return (
     <Style.PokemonCard>
-      <h1 className="card-title">{capitalizeFirstLetter(props.name)}</h1>
+      <div className="top-row">
+        <img className="hidden-ico" src={`${process.env.PUBLIC_URL}/turn-ico.svg`} alt="" />
+        <h1 className="card-title">{capitalizeFirstLetter(props.name)}</h1>
+        <img
+          className="turn-ico"
+          src={`${process.env.PUBLIC_URL}/turn-ico.svg`}
+          alt=""
+          onClick={() => setDisplayBack(!displayBack)}
+        />
+      </div>
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
           displayBack ? 'back/' : ''
         }${props.id}.png`}
         alt={capitalizeFirstLetter(props.name)}
-        onClick={() => setDisplayBack(!displayBack)}
       />
       <p className="card-info">Id: {props.id}</p>
       <p className="card-info">Weight: {props.weight / 10} kg</p>

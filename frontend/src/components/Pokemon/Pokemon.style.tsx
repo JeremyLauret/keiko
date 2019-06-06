@@ -1,11 +1,22 @@
 import styled from 'styled-components';
 
 export default {
-  Intro: styled.div`
-    font-size: 20px;
+  PokemonCard: styled.div`
+    max-width: 150px;
+    padding: 10px 50px;
+    border-style: double;
+    border-width: 5px;
+    font-family: 'PokemonFont';
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 10px;
+    .card-title {
+      font-size: 13px;
+    }
+    .card-info {
+      font-size: 10px;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+    }
   `,
 };

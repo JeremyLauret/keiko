@@ -6,9 +6,13 @@ import { makeGetRequest } from 'services/networking/request';
 
 interface Props {}
 interface State {
+  loading: boolean;
+  error: boolean;
   pokemons: {
     id: number;
     name: string;
+    height: number;
+    weight: number;
   }[];
 }
 
@@ -16,25 +20,39 @@ class Home extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      loading: true,
+      error: false,
       pokemons: [],
     };
   }
 
-  componentDidMount() {
-    makeGetRequest('/pokemon').then(response => this.setState({ pokemons: response.body }));
+  async componentDidMount() {
+    try {
+      let response = await makeGetRequest('/pokemon');
+      this.setState({ loading: false, pokemons: response.body });
+    } catch (e) {
+      this.setState({ loading: false, error: true });
+    }
   }
 
   render(): React.ReactNode {
-    if (this.state.pokemons.length == 0) {
-      return <Style.Intro>Pokemons are loading, please wait...</Style.Intro>;
-    }
-
     return (
-      <Style.Intro>
-        {this.state.pokemons.map(item => (
-          <Pokemon name={item.name} id={item.id} key={item.id} />
-        ))}
-      </Style.Intro>
+      <Style.Pokedex>
+        <h1 className="pokedex-title">Pokedex</h1>
+        {this.state.loading && <img src={`${process.env.PUBLIC_URL}/loader.svg`} alt="Loader" />}
+        {this.state.error && <p className="error-message">Something wrong happened. Send help.</p>}
+        <div className="pokedex-grid">
+          {this.state.pokemons.map(item => (
+            <Pokemon
+              name={item.name}
+              id={item.id}
+              height={item.height}
+              weight={item.weight}
+              key={item.id}
+            />
+          ))}
+        </div>
+      </Style.Pokedex>
     );
   }
 }

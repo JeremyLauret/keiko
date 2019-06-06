@@ -6,7 +6,7 @@ import { makeGetRequest } from 'services/networking/request';
 
 interface Props {}
 
-function Home(props: Props): React.ReactNode {
+function Home(props: Props) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [pokemons, setPokemons] = React.useState<

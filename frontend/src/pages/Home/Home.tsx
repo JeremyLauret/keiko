@@ -1,12 +1,11 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 import Style from './Home.style';
 import Pokemon from 'components/Pokemon';
 import { makeGetRequest } from 'services/networking/request';
 
-interface Props {}
-
-function Home(props: Props) {
+function Home(props: RouteComponentProps<{ page: string }>) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [pokemons, setPokemons] = React.useState<
@@ -21,7 +20,9 @@ function Home(props: Props) {
   React.useEffect(() => {
     async function fillGrid() {
       try {
-        let response = await makeGetRequest('/pokemon');
+        let response = await makeGetRequest(
+          `/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`,
+        );
         setPokemons(response.body);
       } catch (e) {
         setError(true);

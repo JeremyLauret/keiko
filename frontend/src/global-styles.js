@@ -6,6 +6,6 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   @font-face {
      font-family: 'PokemonFont';
-     src: url('./fonts/pokemon-gb.ttf') format('truetype');
+     src: url('/fonts/pokemon-gb.ttf') format('truetype');
   }
 `;

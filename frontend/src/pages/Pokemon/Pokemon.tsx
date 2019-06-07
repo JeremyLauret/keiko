@@ -17,7 +17,7 @@ function Pokemon(props: RouteComponentProps<{ id: string }>) {
   React.useEffect(() => {
     async function displayPokemon() {
       try {
-        let response = await makeGetRequest(`/pokemon/${1}`);
+        let response = await makeGetRequest(`/pokemon/${props.match.params.id}`);
         setPokemon(response.body);
       } catch (e) {
         setError(true);
@@ -36,7 +36,6 @@ function Pokemon(props: RouteComponentProps<{ id: string }>) {
       {!error && !loading && (
         <div>
           <p>Name: {pokemon.name}</p>
-          <p>URL parameter : {props.match.params.id}</p>
         </div>
       )}
     </Style.PokemonPage>

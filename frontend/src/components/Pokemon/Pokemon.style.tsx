@@ -17,6 +17,10 @@ export default {
       align-items: center;
       flex-direction: column;
     }
+    .card-link {
+      text-decoration: none;
+      color: black;
+    }
     .card-title {
       font-size: 13px;
     }

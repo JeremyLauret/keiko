@@ -31,7 +31,7 @@ function Home(props: Props) {
     }
 
     fillGrid();
-  });
+  }, []); // The empty array disables re-rendering after update.
 
   return (
     <Style.Pokedex>

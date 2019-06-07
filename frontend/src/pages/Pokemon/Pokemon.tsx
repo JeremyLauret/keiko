@@ -2,10 +2,9 @@ import * as React from 'react';
 
 import Style from './Pokemon.style';
 import { makeGetRequest } from 'services/networking/request';
+import { RouteComponentProps } from 'react-router-dom';
 
-interface Props {}
-
-function Pokemon(props: Props) {
+function Pokemon(props: RouteComponentProps<{ id: string }>) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [pokemon, setPokemon] = React.useState<{
@@ -34,7 +33,12 @@ function Pokemon(props: Props) {
     <Style.PokemonPage>
       {loading && <img src={`${process.env.PUBLIC_URL}/loader.svg`} alt="Loader" />}
       {error && <p className="error-message">Something wrong happened. Send help.</p>}
-      {!error && !loading && <p>name: {pokemon.name}</p>}
+      {!error && !loading && (
+        <div>
+          <p>Name: {pokemon.name}</p>
+          <p>URL parameter : {props.match.params.id}</p>
+        </div>
+      )}
     </Style.PokemonPage>
   );
 }

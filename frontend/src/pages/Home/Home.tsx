@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Style from './Home.style';
 import Pokemon from 'components/Pokemon';
@@ -37,6 +38,21 @@ function Home(props: RouteComponentProps<{ page: string }>) {
   return (
     <Style.Pokedex>
       <h1 className="pokedex-title">Pokedex</h1>
+      <nav className="nav">
+        {+props.match.params.page > 1 && (
+          <Link className="arrow" to={`/pokedex/${+props.match.params.page - 1}`}>
+            &lt;
+          </Link>
+        )}
+        {(!props.match.params.page || +props.match.params.page < 6) && (
+          <Link
+            className="arrow arrow-right"
+            to={`/pokedex/${props.match.params.page ? +props.match.params.page + 1 : 2}`}
+          >
+            &gt;
+          </Link>
+        )}
+      </nav>
       {loading && <img src={`${process.env.PUBLIC_URL}/loader.svg`} alt="Loader" />}
       {error && <p className="error-message">Something wrong happened. Send help.</p>}
       <div className="pokedex-grid">

@@ -18,22 +18,25 @@ function Home(props: RouteComponentProps<{ page: string }>) {
     }[]
   >([]);
 
-  React.useEffect(() => {
-    async function fillGrid() {
-      try {
-        let response = await makeGetRequest(
-          `/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`,
-        );
-        setPokemons(response.body);
-      } catch (e) {
-        setError(true);
-      } finally {
-        setLoading(false);
+  React.useEffect(
+    () => {
+      async function fillGrid() {
+        try {
+          let response = await makeGetRequest(
+            `/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`,
+          );
+          setPokemons(response.body);
+        } catch (e) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
 
-    fillGrid();
-  }, []); // The empty array disables re-rendering after update.
+      fillGrid();
+    },
+    [props.match.params.page], // Tracked parameters for re-rendering.
+  );
 
   return (
     <Style.Pokedex>

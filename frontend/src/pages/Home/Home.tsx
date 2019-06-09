@@ -6,7 +6,7 @@ import Style from './Home.style';
 import Pokemon from 'components/Pokemon';
 import { makeGetRequest } from 'services/networking/request';
 
-function Home(props: RouteComponentProps<{ page: string }>) {
+function Home(props: RouteComponentProps<{ page?: string }>) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [pokemons, setPokemons] = React.useState<
@@ -42,7 +42,7 @@ function Home(props: RouteComponentProps<{ page: string }>) {
     <Style.Pokedex>
       <h1 className="pokedex-title">Pokedex</h1>
       <nav className="nav">
-        {+props.match.params.page > 1 && (
+        {props.match.params.page && +props.match.params.page > 1 && (
           <Link className="arrow" to={`/pokedex/${+props.match.params.page - 1}`}>
             &lt;
           </Link>

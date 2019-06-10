@@ -4,40 +4,17 @@ import { Link } from 'react-router-dom';
 
 import Style from './Home.style';
 import Pokemon from 'components/Pokemon';
-import { makeGetRequest } from 'services/networking/request';
 
-function Home(props: RouteComponentProps<{ page?: string }>) {
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(false);
-  const [pokemons, setPokemons] = React.useState<
-    {
-      id: number;
-      name: string;
-      height: number;
-      weight: number;
-    }[]
-  >([]);
+interface Props {
+  pokemons: {
+    id: number;
+    name: string;
+    height: number;
+    weight: number;
+  }[];
+}
 
-  React.useEffect(
-    () => {
-      async function fillGrid() {
-        try {
-          let response = await makeGetRequest(
-            `/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`,
-          );
-          setPokemons(response.body);
-        } catch (e) {
-          setError(true);
-        } finally {
-          setLoading(false);
-        }
-      }
-
-      fillGrid();
-    },
-    [props.match.params.page], // Tracked parameters for re-rendering.
-  );
-
+function Home(props: Props & RouteComponentProps<{ page?: string }>) {
   return (
     <Style.Pokedex>
       <h1 className="pokedex-title">Pokedex</h1>
@@ -56,10 +33,8 @@ function Home(props: RouteComponentProps<{ page?: string }>) {
           </Link>
         )}
       </nav>
-      {loading && <img src={`${process.env.PUBLIC_URL}/loader.svg`} alt="Loader" />}
-      {error && <p className="error-message">Something wrong happened. Send help.</p>}
       <div className="pokedex-grid">
-        {pokemons.map(item => (
+        {props.pokemons.map(item => (
           <Pokemon
             name={item.name}
             id={item.id}

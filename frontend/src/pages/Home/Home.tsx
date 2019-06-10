@@ -14,7 +14,7 @@ interface Props {
   }[];
 }
 
-let Home = (props: Props & RouteComponentProps<{ page?: string }>) => (
+const Home = (props: Props & RouteComponentProps<{ page?: string }>) => (
   <Style.Pokedex>
     <h1 className="pokedex-title">Pokedex</h1>
     <nav className="nav">

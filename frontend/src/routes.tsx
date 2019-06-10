@@ -9,6 +9,7 @@ const routes = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/pokemon/:id" component={Pokemon} />
+      <Route path="/pokedex/:page" component={Home} />
     </Switch>
   </Suspense>
 );

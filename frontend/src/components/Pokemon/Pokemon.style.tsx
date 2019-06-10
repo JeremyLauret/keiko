@@ -2,19 +2,32 @@ import styled from 'styled-components';
 
 export default {
   PokemonCard: styled.div`
-    max-width: 150px;
-    padding: 10px 50px;
+    --title-size: 13px;
+    --info-size: 10px;
+    position: relative;
     border-style: double;
     border-width: 5px;
     font-family: 'PokemonFont';
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    .turn-ico {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    .column {
+      padding: 10px 50px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .card-link {
+      text-decoration: none;
+      color: black;
+    }
     .card-title {
-      font-size: 13px;
+      font-size: var(--title-size);
     }
     .card-info {
-      font-size: 10px;
+      font-size: var(--info-size);
       padding-top: 0.3em;
       padding-bottom: 0.3em;
     }

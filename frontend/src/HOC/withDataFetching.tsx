@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { makeGetRequest } from 'services/networking/request';
 import Style from './withDataFetching.style';
 
 const withDataFetching = (dataName: string, fetchFunction: Function) => <T extends {}>(

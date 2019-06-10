@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import Style from './withDataFetching.style';
 
-const withDataFetching = (dataName: string, fetchFunction: Function) => <T extends {}>(
-  BaseComponent: React.ComponentType<T & { [dataName: string]: object | object[] }>,
-) => (props: T) => {
+const withDataFetching = (dataName: string, fetchFunction: Function) => (
+  BaseComponent: React.ComponentType<any>,
+) => (props: any) => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
-  const [data, setData] = React.useState<{ [dataName: string]: object | object[] } | null>(null);
+  const [data, setData] = React.useState<any>(null);
 
   React.useEffect(
     () => {

@@ -2,19 +2,11 @@ import styled from 'styled-components';
 
 export default {
   PokemonPage: styled.div`
-    --error-size: 50px;
     --title-size: 30px;
     --info-size: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    .error-message {
-      font-size: var(--error-size);
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
     .grid {
       display: grid;
       grid-template-columns: auto auto;

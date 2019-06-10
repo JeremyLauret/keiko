@@ -14,45 +14,43 @@ interface Props {
   };
 }
 
-function Pokemon(props: Props) {
-  return (
-    <Style.PokemonPage>
-      <div className="container">
-        <h1 className="main-title">{capitalizeFirstLetter(props.pokemon.name)}</h1>
-        <figure className="grid">
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              props.pokemon.id
-            }.png`}
-            alt={capitalizeFirstLetter(props.pokemon.name)}
-          />
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${
-              props.pokemon.id
-            }.png`}
-            alt={`${capitalizeFirstLetter(props.pokemon.name)} back`}
-          />
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${
-              props.pokemon.id
-            }.png`}
-            alt={`Shiny ${capitalizeFirstLetter(props.pokemon.name)}`}
-          />
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${
-              props.pokemon.id
-            }.png`}
-            alt={`Shiny ${capitalizeFirstLetter(props.pokemon.name)} back`}
-          />
-        </figure>
-        <div className="info">
-          <p className="card-info">Height: {props.pokemon.height}</p>
-          <p className="card-info">Weight: {props.pokemon.weight}</p>
-          <p className="card-info">Id: {props.pokemon.id}</p>
-        </div>
+let Pokemon = (props: Props) => (
+  <Style.PokemonPage>
+    <div className="container">
+      <h1 className="main-title">{capitalizeFirstLetter(props.pokemon.name)}</h1>
+      <figure className="grid">
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            props.pokemon.id
+          }.png`}
+          alt={capitalizeFirstLetter(props.pokemon.name)}
+        />
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${
+            props.pokemon.id
+          }.png`}
+          alt={`${capitalizeFirstLetter(props.pokemon.name)} back`}
+        />
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${
+            props.pokemon.id
+          }.png`}
+          alt={`Shiny ${capitalizeFirstLetter(props.pokemon.name)}`}
+        />
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${
+            props.pokemon.id
+          }.png`}
+          alt={`Shiny ${capitalizeFirstLetter(props.pokemon.name)} back`}
+        />
+      </figure>
+      <div className="info">
+        <p className="card-info">Height: {props.pokemon.height}</p>
+        <p className="card-info">Weight: {props.pokemon.weight}</p>
+        <p className="card-info">Id: {props.pokemon.id}</p>
       </div>
-    </Style.PokemonPage>
-  );
-}
+    </div>
+  </Style.PokemonPage>
+);
 
 export default Pokemon;

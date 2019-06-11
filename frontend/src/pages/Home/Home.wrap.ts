@@ -3,14 +3,10 @@ import { connect } from 'react-redux';
 
 import Home from './Home';
 import { RootState } from '../../redux/types';
-import {
-  fetchPokemonsSuccess,
-  PokemonState,
-  PokemonType,
-  PokemonAction,
-} from '../../redux/Pokemon';
+import { fetchPokemonsSuccess, PokemonType, PokemonAction } from '../../redux/Pokemon';
 import withDataFetching from '../../HOC/withDataFetching';
 import { makeGetRequest } from 'services/networking/request';
+import { normalize } from '../../services/PokemonNormalizer';
 
 const mapStateToProps = (state: RootState) => ({
   pokemons: Object.values(state.pokemon),
@@ -21,8 +17,8 @@ const withDataFetchingHome = withDataFetching(
     makeGetRequest(`/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`),
   (
     props: { fetchPokemonsSuccess(pokemons: PokemonType | {}): PokemonAction },
-    pokemons: PokemonState,
-  ) => props.fetchPokemonsSuccess({}),
+    pokemons: PokemonType[],
+  ) => props.fetchPokemonsSuccess(normalize(pokemons)),
 )(Home);
 
 export default connect(

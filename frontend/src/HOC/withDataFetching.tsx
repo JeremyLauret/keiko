@@ -13,7 +13,6 @@ const withDataFetching = (fetchFunction: Function, dispatchFunction: Function) =
       async function fetchData() {
         try {
           const response = await fetchFunction(props);
-          console.log(dispatchFunction);
           dispatchFunction(props, response.body);
         } catch (e) {
           setError(true);

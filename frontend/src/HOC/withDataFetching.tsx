@@ -23,7 +23,7 @@ const withDataFetching = (fetchFunction: Function, dispatchFunction: Function) =
 
       fetchData();
     },
-    [props], // Re-render when props change.
+    [props.match.params], // Re-render when URL parameters change.
   );
 
   return (

@@ -15,7 +15,6 @@ const reducer = (state: PokemonState = initialState, action: AnyAction) => {
   switch (typedAction.type) {
     case getType(fetchPokemonsSuccess):
       return {
-        ...state,
         ...typedAction.payload,
       };
     default:

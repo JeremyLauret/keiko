@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 
 import Home from './Home';
 import { RootState } from '../../redux/types';
-import { fetchPokemonsSuccess, PokemonType, PokemonAction } from '../../redux/Pokemon';
+import { fetchPokemonsSuccess, PokemonAction } from '../../redux/Pokemon';
 import withDataFetching from '../../HOC/withDataFetching';
 import { makeGetRequest } from 'services/networking/request';
 import { normalize } from '../../services/PokemonNormalizer';
+
+export type PokemonType = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+};
 
 const mapStateToProps = (state: RootState) => ({
   pokemons: Object.values(state.pokemon),

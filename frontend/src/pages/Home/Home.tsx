@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Style from './Home.style';
 import Pokemon from 'components/Pokemon';
-import { PokemonType } from '../../redux/Pokemon';
+import { PokemonType } from './Home.wrap';
 
 interface Props {
   pokemons: PokemonType[];

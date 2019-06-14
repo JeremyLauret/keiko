@@ -8,7 +8,7 @@ export type PokemonAction = ActionType<typeof fetchPokemonsSuccess>;
 
 export type PokemonState = Readonly<Record<string, PokemonType>>;
 
-const initialState: PokemonState = {};
+const initialState: PokemonState = { 91: { id: 91, name: 'cloyster', height: 15, weight: 1325 } };
 
 const reducer = (state: PokemonState = initialState, action: AnyAction) => {
   const typedAction = action as PokemonAction;

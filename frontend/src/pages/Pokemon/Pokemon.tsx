@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Style from './Pokemon.style';
+import { PokemonType } from '../Home';
 
 // Return a string with a capital first letter.
 const capitalizeFirstLetter = (str: string) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
@@ -15,12 +16,7 @@ const renderPokemonPicture = (id: number, name: string, back: boolean, shiny: bo
 );
 
 interface Props {
-  pokemon: {
-    id: number;
-    name: string;
-    height: number;
-    weight: number;
-  };
+  pokemon: PokemonType;
 }
 
 const Pokemon = (props: Props) => (

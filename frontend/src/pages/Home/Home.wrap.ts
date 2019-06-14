@@ -2,9 +2,9 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Home from './Home';
-import { RootState } from '../../redux/types';
 import { fetchPokemonsSuccess, PokemonAction } from '../../redux/Pokemon';
 import withDataFetching from '../../HOC/withDataFetching';
+import { getPokemons } from '../../redux/Pokemon';
 import { makeGetRequest } from 'services/networking/request';
 import { normalize } from '../../services/PokemonNormalizer';
 
@@ -14,10 +14,6 @@ export type PokemonType = {
   height: number;
   weight: number;
 };
-
-const mapStateToProps = (state: RootState) => ({
-  pokemons: Object.values(state.pokemon),
-});
 
 const withDataFetchingHome = withDataFetching(
   (props: RouteComponentProps<{ page?: string }>) =>
@@ -29,6 +25,6 @@ const withDataFetchingHome = withDataFetching(
 )(Home);
 
 export default connect(
-  mapStateToProps,
+  getPokemons,
   { fetchPokemonsSuccess },
 )(withDataFetchingHome);

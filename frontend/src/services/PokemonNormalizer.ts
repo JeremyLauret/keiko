@@ -1,4 +1,4 @@
-import { PokemonType } from '../redux/Pokemon';
+import { PokemonType } from '../pages/Home';
 
 function reducer(previousValue: Record<number, PokemonType>, pokemon: PokemonType) {
   previousValue[pokemon.id] = pokemon;

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Style from './withDataFetching.style';
 
-const withDataFetching = (fetchFunction: Function, dispatchFunction: Function) => (
+const withDataFetching = (fetchActionDispatcher: Function) => (
   BaseComponent: React.ComponentType<any>,
 ) => (props: any) => {
   const [loading, setLoading] = React.useState(true);
@@ -10,18 +10,8 @@ const withDataFetching = (fetchFunction: Function, dispatchFunction: Function) =
 
   React.useEffect(
     () => {
-      async function fetchData() {
-        try {
-          const response = await fetchFunction(props);
-          dispatchFunction(props, response.body);
-        } catch (e) {
-          setError(true);
-        } finally {
-          setLoading(false);
-        }
-      }
-
-      fetchData();
+      fetchActionDispatcher(props);
+      setLoading(false);
     },
     [props.match.params], // Re-render when URL parameters change.
   );

@@ -21,15 +21,8 @@ const withDataFetchingHome = withDataFetching(
       fetchPokemonsRequested(page: string): PokemonAction;
     },
   ) => {
-    props.fetchPokemonsRequested('1');
-    return makeGetRequest(
-      `/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`,
-    );
+    props.fetchPokemonsRequested(props.match.params.page ? props.match.params.page : '1');
   },
-  (
-    props: { fetchPokemonsSuccess(pokemons: PokemonType | {}): PokemonAction },
-    pokemons: PokemonType[],
-  ) => props.fetchPokemonsSuccess(normalize(pokemons)),
 )(Home);
 
 export default connect(

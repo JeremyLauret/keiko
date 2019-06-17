@@ -2,7 +2,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Home from './Home';
-import { fetchPokemonsSuccess, PokemonAction } from '../../redux/Pokemon';
+import { fetchPokemonsSuccess, fetchPokemonsRequested, PokemonAction } from '../../redux/Pokemon';
 import withDataFetching from '../../HOC/withDataFetching';
 import { getPokemons } from '../../redux/Pokemon';
 import { makeGetRequest } from 'services/networking/request';
@@ -16,8 +16,16 @@ export type PokemonType = {
 };
 
 const withDataFetchingHome = withDataFetching(
-  (props: RouteComponentProps<{ page?: string }>) =>
-    makeGetRequest(`/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`),
+  (
+    props: RouteComponentProps<{ page?: string }> & {
+      fetchPokemonsRequested(page: string): PokemonAction;
+    },
+  ) => {
+    props.fetchPokemonsRequested('1');
+    return makeGetRequest(
+      `/pokemon${props.match.params.page ? `?page=${props.match.params.page}` : ''}`,
+    );
+  },
   (
     props: { fetchPokemonsSuccess(pokemons: PokemonType | {}): PokemonAction },
     pokemons: PokemonType[],
@@ -26,5 +34,5 @@ const withDataFetchingHome = withDataFetching(
 
 export default connect(
   getPokemons,
-  { fetchPokemonsSuccess },
+  { fetchPokemonsSuccess, fetchPokemonsRequested },
 )(withDataFetchingHome);

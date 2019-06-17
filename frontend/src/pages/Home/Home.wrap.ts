@@ -5,8 +5,6 @@ import Home from './Home';
 import { fetchPokemonsSuccess, fetchPokemonsRequested, PokemonAction } from '../../redux/Pokemon';
 import withDataFetching from '../../HOC/withDataFetching';
 import { getPokemons } from '../../redux/Pokemon';
-import { makeGetRequest } from 'services/networking/request';
-import { normalize } from '../../services/PokemonNormalizer';
 
 export type PokemonType = {
   id: number;

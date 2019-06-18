@@ -4,14 +4,10 @@ import { Link } from 'react-router-dom';
 
 import Style from './Home.style';
 import Pokemon from 'components/Pokemon';
+import { PokemonType } from './Home.wrap';
 
 interface Props {
-  pokemons: {
-    id: number;
-    name: string;
-    height: number;
-    weight: number;
-  }[];
+  pokemons: PokemonType[];
 }
 
 const Home = (props: Props & RouteComponentProps<{ page?: string }>) => (

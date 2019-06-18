@@ -13,4 +13,8 @@ describe('Pokemon normalizer', () => {
     };
     expect(normalize(pokemons)).toEqual(expectedState);
   });
+
+  it('Should return an empty object given an empty array', () => {
+    expect(normalize([])).toEqual({});
+  });
 });

@@ -14,7 +14,7 @@ const withDataFetching = (fetchActionDispatcher: Function) => (
 
   return (
     <Style.DataFetching>
-      <BaseComponent {...props} />
+      {(props.pokemon || props.pokemons) && <BaseComponent {...props} />}
     </Style.DataFetching>
   );
 };

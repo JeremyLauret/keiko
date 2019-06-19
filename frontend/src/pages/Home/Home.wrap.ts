@@ -2,7 +2,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Home from './Home';
-import { fetchPokemonsSuccess, fetchPokemonsRequested, PokemonAction } from '../../redux/Pokemon';
+import { fetchPokemonsRequested, PokemonAction } from '../../redux/Pokemon';
 import withDataFetching from '../../HOC/withDataFetching';
 import { getPokemons } from '../../redux/Pokemon';
 
@@ -25,5 +25,5 @@ const withDataFetchingHome = withDataFetching(
 
 export default connect(
   getPokemons,
-  { fetchPokemonsSuccess, fetchPokemonsRequested },
+  { fetchPokemonsRequested },
 )(withDataFetchingHome);

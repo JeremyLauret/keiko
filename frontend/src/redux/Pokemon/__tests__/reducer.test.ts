@@ -1,12 +1,8 @@
 import { fetchPokemonSuccess, fetchPokemonsSuccess } from '../actions';
+import { pokemons, cloyster } from '__fixtures__/pokemons';
 import reducer from '../reducer';
 
 const initialState = { 1: { id: 1, name: 'bulbasaur', height: 7, weight: 69 } };
-const pokemons = {
-  91: { id: 91, name: 'cloyster', height: 15, weight: 1325 },
-  92: { id: 92, name: 'gastly', height: 13, weight: 1 },
-};
-const cloyster = pokemons[91];
 
 describe('Pokemon reducer', () => {
   describe('FETCH_POKEMON_SUCCESS case', () => {

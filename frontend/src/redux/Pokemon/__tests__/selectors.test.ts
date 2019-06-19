@@ -1,10 +1,6 @@
 import { state } from '__fixtures__/state';
 import { getPokemon, getPokemons } from '../selectors';
-
-const pokemons = {
-  91: { id: 91, name: 'cloyster', height: 15, weight: 1325 },
-  92: { id: 92, name: 'gastly', height: 13, weight: 1 },
-};
+import { pokemons, pokemonsArr } from '__fixtures__/pokemons';
 
 const initialState = { ...state, pokemon: pokemons };
 
@@ -23,10 +19,6 @@ describe('Pokemon selectors', () => {
   });
   describe('getPokemons function', () => {
     it('Should return the value stored in store.pokemon', () => {
-      const pokemonsArr = [
-        { id: 91, name: 'cloyster', height: 15, weight: 1325 },
-        { id: 92, name: 'gastly', height: 13, weight: 1 },
-      ];
       expect(getPokemons(initialState)).toEqual({ pokemons: pokemonsArr });
     });
   });

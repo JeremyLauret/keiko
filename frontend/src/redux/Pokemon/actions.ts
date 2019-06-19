@@ -11,5 +11,13 @@ export const fetchPokemonSuccess = createStandardAction('Pokemon/FETCH_POKEMON_S
 export const fetchPokemonsRequested = createStandardAction('Pokemon/FETCH_POKEMONS_REQUESTED')<
   string
 >();
+export const fetchPokemonRequested = createStandardAction('Pokemon/FETCH_POKEMON_REQUESTED')<
+  string
+>();
 
-export default { fetchPokemonsSuccess, fetchPokemonSuccess, fetchPokemonsRequested };
+export default {
+  fetchPokemonsSuccess,
+  fetchPokemonSuccess,
+  fetchPokemonsRequested,
+  fetchPokemonRequested,
+};

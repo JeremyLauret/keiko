@@ -9,12 +9,12 @@ import {
   fetchPokemonRequested,
 } from './actions';
 
-function* fetchPokemons(action: ActionType<typeof fetchPokemonsRequested>) {
+export function* fetchPokemons(action: ActionType<typeof fetchPokemonsRequested>) {
   const response = yield call(makeGetRequest, `/pokemon?page=${action.payload}`);
   yield put(fetchPokemonsSuccess(normalize(response.body)));
 }
 
-function* fetchPokemon(action: ActionType<typeof fetchPokemonRequested>) {
+export function* fetchPokemon(action: ActionType<typeof fetchPokemonRequested>) {
   const response = yield call(makeGetRequest, `/pokemon/${action.payload}`);
   yield put(fetchPokemonSuccess(response.body));
 }
